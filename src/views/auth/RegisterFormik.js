@@ -468,7 +468,7 @@ const RegisterFormik = ({ setPopUp }) => {
     const { name, value } = e.target;
     setInitialValues({ ...initialValues, [name]: value });
   };
-
+  const [message,setMessage]=useState()
   const handlesubmit = async (e) => {
     e.preventDefault();
     const { firstname, lastname, mobile, email, password, confirmPassword } = initialValues;
@@ -482,9 +482,12 @@ const RegisterFormik = ({ setPopUp }) => {
       };
       const response = await apiPostPut(body, '/users/create-user', 'POST');
       if (response.status === 200) {
-        navigate('/loginformik');
+         setPopUp(false);
+         alert("user created successfully")
       } else {
-        Alert('Something went wrong');
+
+       Alert('Something went wrong');
+        setMessage(response?.body?.message)
       }
     } else {
       console.log('Passwords do not match');
@@ -546,7 +549,7 @@ const RegisterFormik = ({ setPopUp }) => {
             <Row>
               <Col md="12">
                 <h2 className="mb-4" style={{ fontWeight: 'bold' }}>
-                  Enter details to Sign up
+                  Create a new financial planner
                 </h2>
                 <Formik initialValues={initialValues} validationSchema={validationSchema}>
                   {() => (
@@ -670,7 +673,7 @@ const RegisterFormik = ({ setPopUp }) => {
                           </FormGroup>
                         </Col>
                       </Row>
-
+<p style={{color:'red'}}>{message}</p>
                       <Button
                         type="submit"
                         color="success"

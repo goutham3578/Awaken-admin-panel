@@ -29,6 +29,16 @@ const PendingLeads = () => {
     return formattedDate;
   };
 
+
+  const checkColor=(value)=>{
+    if (value == 'agentPending') {
+      return '#FFEAA0';
+    } 
+    else {
+      return '#E0F7FA';
+    }
+  }
+
   return useObserver(() => (
     <div style={{ width: '100%' }}>
       <h1 className="text-white text-center fw-semibold" style={{ marginBottom: '2%' }}>
@@ -77,7 +87,7 @@ const PendingLeads = () => {
                         <td className="text-center d-flex justify-content-center align-items-center">
                           <Button
                             className="border rounded-2 border-reaidy-orange text-reaidy-orange d-flex align-items-center gap-1"
-                            style={{ fontSize: 12, backgroundColor: '#FFEAA0', color: '#344071' }}
+                            style={{ fontSize: 12, backgroundColor: checkColor(lead.status), color: '#344071' }}
                           >
                             {/* <AiOutlineClockCircle style={{color:'#344071'}} />  */}
                             {pedningstatus(lead.status)}

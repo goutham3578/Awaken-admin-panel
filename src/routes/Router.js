@@ -3,6 +3,7 @@ import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/loader/Loadable';
 import { element } from 'prop-types';
+import { useStores } from '../store1';
 /****Layouts*****/
 
 const FullLayout = Loadable(lazy(() => import('../layouts/FullLayout')));
@@ -112,6 +113,11 @@ const RecoverPassword = Loadable(lazy(() => import('../views/auth/RecoverPasswor
 const ResetPassword = Loadable(lazy(() => import('../views/auth/ResetPwd')));
 const ClusterId = Loadable(lazy(() => import('../views/auth/ClusterId')));
 
+// const isAuthenticated = () => {
+//   // Replace this with your actual authentication check logic
+//   return User=="";
+// };
+
 
 
 /*****Routes******/
@@ -122,7 +128,7 @@ const ThemeRoutes = [
     element: <FullLayout />,
     children: [
       // { path: '/', element: <Navigate to="/auth/loginformik" /> },
-      { path: '/', name: 'Home', element: <Navigate to="/dashboards/minimal" /> },
+      { path: '/', name: 'Home', element: <Navigate to="/loginformik" /> },
       { path: '/dashboards/minimal', name: 'Minimal', exact: true, element: <Minimal /> },
       { path: '/dashboards/analytical', name: 'Analytical', exact: true, element: <Analytical /> },
       { path: '/dashboards/settings', name: 'Settings', exact: true, element: <Settings /> },

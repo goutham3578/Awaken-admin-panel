@@ -168,13 +168,14 @@ import AuthLogo from '../../layouts/logo/AuthLogo';
 import FactInput from '../components/FactInput';
 import { apiPostPut } from '../../api/api_methods';
 import { Bold } from 'react-feather';
+import { useStores } from '../../store1';
 
 const Login = () => {
   const [open, setOpen] = useState('password');
   const showPassword = () => {
     setOpen(open === 'password' ? 'text' : 'password');
   };
-
+  const {User}=useStores();
   const [email, setemail] = useState('');
 
   const [password, setpassword] = useState('');
@@ -218,6 +219,8 @@ const Login = () => {
     try {
       const response = await apiPostPut(body, '/users/login', 'POST');
       if (response.status == 200) {
+        User.setUser(response?.body?.data)
+        console.log(User?.user)
         navigate('/dashboards/minimal');
       }
     } catch (error) {

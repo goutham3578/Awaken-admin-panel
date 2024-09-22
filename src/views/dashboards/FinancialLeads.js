@@ -15,7 +15,7 @@ const FinancialLeads = () => {
 
   // 2. Update values when Leads.agents is populated
   useEffect(() => {
-    if (Leads.agents.length > 0) {
+    if (Leads?.agents && Leads?.agents.length > 0) {
       const agentNames = Leads.agents
         .map((value) => {
           if (value && value.firstName && value.lastName) {
@@ -24,7 +24,6 @@ const FinancialLeads = () => {
           return null;
         })
         .filter(Boolean); // Remove null values
-
       setValues(agentNames);
       console.log('Updated values:', agentNames);
     }
@@ -37,6 +36,9 @@ const FinancialLeads = () => {
     return formattedDate;
   };
 
+
+
+  
   const selectElement = document.getElementById('mySelect');
 
   // values.forEach((value) => {
@@ -49,7 +51,7 @@ const FinancialLeads = () => {
   return useObserver(() => (
     <div style={{ width: '100%' }}>
       <h1 className="text-white text-center fw-semibold" style={{ marginBottom: '2%' }}>
-        New leads from Financial Planner
+        New leads 
       </h1>
       <Row>
         <Col>
@@ -86,12 +88,7 @@ const FinancialLeads = () => {
                       >
                         Allocated to
                       </th>
-                      <th
-                        className="text-center"
-                        style={{ color: '#344071', fontWeight: 'normal' }}
-                      >
-                        View
-                      </th>
+                     
                     </tr>
                   </thead>
                   <tbody>
@@ -114,14 +111,7 @@ const FinancialLeads = () => {
                             ))}
                           </select>
                         </td>
-                        <td className="text-center d-flex justify-content-center align-items-center">
-                          <Button
-                            className="border border-reaidy-orange text-reaidy-orange"
-                            style={{ fontSize: 12 }}
-                          >
-                            Allocated To
-                          </Button>
-                        </td>
+                       
                       </tr>
                     ))}
                   </tbody>

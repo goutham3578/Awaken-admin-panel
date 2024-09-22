@@ -118,10 +118,10 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [popup, setPopUp] = useState(false);
   const { Leads } = useStores();
+  const userLocal = JSON.parse(localStorage.getItem("User"))
   useEffect(() => {
     Leads.getLeads('');
   }, []);
-  console.log(Leads);
 
   const formatDate = (date) => {
     const originalDate = new Date(date);
@@ -172,6 +172,19 @@ const Dashboard = () => {
     }
   };
 
+  const checkColor=(value)=>{
+    if (value == 'approved') {
+      return '#00AB11';
+    } else if (value == 'adminNew') {
+      return '#344071';
+    } else {
+      return '#FFEAA0';
+    }
+  }
+
+
+const {User}=useStores();
+console.log(User.user.firstName)
   return useObserver(() => (
     <div className="container rounded-3 p-3" style={{ backgroundColor: '#edf1f5' }}>
       {/* Greeting and Lead Cards */}
@@ -180,7 +193,7 @@ const Dashboard = () => {
           <h3 style={{ fontWeight: 500 }}>
             Good morning,{' '}
             <span className="text-success " style={{ fontWeight: 500 }}>
-              Agent name
+             {userLocal?.firstName+' '+userLocal?.lastName}
             </span>
           </h3>
         </Col>
@@ -314,8 +327,8 @@ const Dashboard = () => {
                         <td className="text-formtextcolor">{formatDate(lead.createdAt)}</td>
                         <td className="d-flex align-items-center">
                           <p
-                            className="border border-reaidy-orange text-white bg-success"
-                            style={{ borderRadius: 5, padding: '5%' }}
+                            className="border border-reaidy-orange text-white"
+                            style={{ borderRadius: 5, padding: '5%',backgroundColor:checkColor(lead.status)}}
                           >
                             {showstatus(lead.status)}
                           </p>
