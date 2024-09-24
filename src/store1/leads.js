@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeAutoObservable, toJS } from 'mobx';
-import { apiGet } from '../api/api_methods';
+import { apiGet, apiPostPut } from '../api/api_methods';
 
 class Leads {
   constructor() {
@@ -33,6 +33,12 @@ class Leads {
   }
   setLoading(value) {
     this.loading = value ?? false;
+  }
+
+  async assignLeads(assignedLead){
+    const response=await apiPostPut(assignedLead,'/form/assign-lead/','PUT')
+    console.log(response?.body?.data)
+    
   }
 
   async getLeads(status) {

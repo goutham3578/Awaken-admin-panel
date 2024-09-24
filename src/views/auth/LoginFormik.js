@@ -230,50 +230,12 @@ const Login = () => {
 
   return (
     <>
-      <Navbar color="light" light expand="md">
-        <Row className="w-100 justify-content-between">
+      <Navbar color="light"  expand="md" style={{height:'100px'}}>
+        <Row className="w-100 justify-content-between" >
           <Col md="auto">
             <Link to="/">
               <AuthLogo />
             </Link>
-          </Col>
-          <Col md="auto" className="d-flex align-items-center">
-            <Nav className="ml-auto gap-5" navbar>
-              <NavItem>
-                <NavLink
-                  href="#"
-                  className="fs-3"
-                  style={{ textDecoration: 'none', color: '#344071' }}
-                >
-                  About
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  href="#"
-                  className="fs-3"
-                  style={{ textDecoration: 'none', color: '#344071' }}
-                >
-                  FAQ
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  href="#"
-                  className="fs-3"
-                  style={{ textDecoration: 'none', color: '#344071' }}
-                >
-                  Contact Us
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Col>
-          <Col className="d-flex align-items-center justify-content-end">
-            <NavItem>
-              <Button style={{ backgroundColor: '#03AE52', color: 'white', borderRadius: 10 }}>
-                Book a Free Demo
-              </Button>
-            </NavItem>
           </Col>
         </Row>
       </Navbar>
@@ -294,22 +256,7 @@ const Login = () => {
             }}
           >
             {/* Login Link */}
-            <Row className="d-flex justify-content-end" style={{ marginRight: '-30%',marginBottom:'15%'}}>
-              <Col md="auto" className="d-flex justify-content-end align-items-center">
-                <span className=" fs-5" style={{ color: '#1214B1' }}>
-                  Don't have an account?
-                </span>
-                <Button
-                  color="primary"
-                  outline
-                  className="ms-2"
-                  style={{ borderColor: '#1214B1', color: '#1214B1', borderWidth: 1 }}
-                >
-                  Sign Up
-                </Button>
-              </Col>
-            </Row>
-
+            
             {/* Signup Form */}
             <Row
               style={{

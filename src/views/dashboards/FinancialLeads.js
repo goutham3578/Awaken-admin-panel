@@ -25,7 +25,7 @@ const FinancialLeads = () => {
         })
         .filter(Boolean); // Remove null values
       setValues(agentNames);
-      console.log('Updated values:', agentNames);
+      // console.log('Updated values:', agentNames);
     }
   }, [Leads.agents]);
 
@@ -37,9 +37,9 @@ const FinancialLeads = () => {
   };
 
 
+  const selectElement = document.getElementById('mySelect');
 
   
-  const selectElement = document.getElementById('mySelect');
 
   // values.forEach((value) => {
   //   const option = document.createElement('option');
@@ -51,7 +51,7 @@ const FinancialLeads = () => {
   return useObserver(() => (
     <div style={{ width: '100%' }}>
       <h1 className="text-white text-center fw-semibold" style={{ marginBottom: '2%' }}>
-        New leads 
+        New leads
       </h1>
       <Row>
         <Col>
@@ -63,57 +63,72 @@ const FinancialLeads = () => {
                 <Table hover responsive>
                   <thead className="bg-white">
                     <tr>
-                      <th
-                        className="text-center"
-                        style={{ color: '#344071', fontWeight: 'normal' }}
-                      >
+                      <th className="text-center" style={{ color: '#344071', fontWeight: 'normal' }}>
                         S.no
                       </th>
-
-                      <th
-                        className="text-center"
-                        style={{ color: '#344071', fontWeight: 'normal' }}
-                      >
+                      <th className="text-center" style={{ color: '#344071', fontWeight: 'normal' }}>
                         Name of the client
                       </th>
-                      <th
-                        className="text-center"
-                        style={{ color: '#344071', fontWeight: 'normal' }}
-                      >
+                      <th className="text-center" style={{ color: '#344071', fontWeight: 'normal' }}>
                         Created on
                       </th>
-                      <th
-                        className="text-center"
-                        style={{ color: '#344071', fontWeight: 'normal' }}
-                      >
+                      <th className="text-center" style={{ color: '#344071', fontWeight: 'normal' }}>
                         Allocated to
                       </th>
-                     
                     </tr>
                   </thead>
                   <tbody>
-                    {Leads.newLeads.map((lead, index) => (
-                      <tr key={index} className="align-items-center">
-                        <td className="text-center text-formtextcolor fs-4">{index + 1}</td>
-                        <td className="text-center text-formtextcolor fs-4">
-                          {lead.awareness.personalDetails.name}
+                    {Leads.newLeads && Leads.newLeads.length > 0 ? (
+                      Leads.newLeads.map((lead, index) => (
+                        <tr key={lead._id || index} className="align-items-center">
+                          <td className="text-center text-formtextcolor fs-4">{index + 1}</td>
+                          <td className="text-center text-formtextcolor fs-4">
+                            {lead.awareness.personalDetails.name}
+                          </td>
+  
+                          <td className="text-center text-formtextcolor fs-4">
+                            {formatDate(lead.createdAt)}
+                          </td>
+                          <td className="text-center text-formtextcolor fs-4">
+                            <select
+                              id="mySelect"
+                              style={{ width: '35%', borderRadius: 5 }}
+                              onChange={(e) => {
+                                const selectedAgent = Leads.agents.find(
+                                  (agent) =>
+                                    agent.firstName + ' ' + agent.lastName === e.target.value
+                                );
+                                const assignedLead = {
+                                  agentId: selectedAgent?._id,
+                                  formId: lead._id,
+                                };
+                                console.log('Assigned Lead:', {
+                                  lead_id: lead._id,
+                                  agent_id: selectedAgent?._id,
+                                });
+                                Leads.assignLeads(assignedLead);
+                              }}
+                            >
+                              {Leads.agents && Leads.agents.length > 0 ? (
+                                Leads.agents.map((agent) => (
+                                  <option key={agent._id} value={agent.firstName + ' ' + agent.lastName}>
+                                    {agent.firstName + ' ' + agent.lastName}
+                                  </option>
+                                ))
+                              ) : (
+                                <option>No agents available</option>
+                              )}
+                            </select>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="4" className="text-center">
+                          No leads available
                         </td>
-
-                        <td className="text-center text-formtextcolor fs-4">
-                          {formatDate(lead.createdAt)}
-                        </td>
-                        <td className="text-center text-formtextcolor fs-4">
-                          <select id="mySelect" style={{ width: '35%', borderRadius: 5 }}>
-                            {values.map((value) => (
-                              <option key={value} value={value}>
-                                {value}
-                              </option> // Add key prop
-                            ))}
-                          </select>
-                        </td>
-                       
                       </tr>
-                    ))}
+                    )}
                   </tbody>
                 </Table>
               )}
@@ -123,6 +138,7 @@ const FinancialLeads = () => {
       </Row>
     </div>
   ));
+  
 };
 
 export default FinancialLeads;
