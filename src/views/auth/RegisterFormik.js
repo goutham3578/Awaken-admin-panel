@@ -420,7 +420,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
-import Layer from '../../assets/images/svg/Layer.svg';
+import Layer from '../../assets/images/svg/Layer.png';
 import FactInput from '../components/FactInput';
 import { apiPostPut } from '../../api/api_methods';
 import { IoCloseCircleOutline } from 'react-icons/io5';
@@ -485,8 +485,7 @@ const RegisterFormik = ({ setPopUp }) => {
          setPopUp(false);
          alert("user created successfully")
       } else {
-
-       Alert('Something went wrong');
+        Alert('Something went wrong');
         setMessage(response?.body?.message)
       }
     } else {
@@ -517,6 +516,7 @@ const RegisterFormik = ({ setPopUp }) => {
         height: '100%',
         backgroundColor: 'white',
         padding: 0,
+        overflow:'hidden'
       }}
     >
       <IoCloseCircleOutline
@@ -532,11 +532,12 @@ const RegisterFormik = ({ setPopUp }) => {
       <Container fluid className="vh-100 p-0">
         <Row className="m-0 h-100">
           {/* Left side illustration */}
-          <Col md="6" className="d-none d-md-block p-0">
+          <Col md="6" className="d-none d-md-block p-0 center d-flex justify-content-center align-items-center">
             <img
               src={Layer}
               alt="Login"
-              style={{ width: '90%', height: '70%', objectFit: 'cover' }}
+              style={{   width: '90%', // Use full width
+                height: '50%',objectFit: 'cover',}}
             />
           </Col>
 

@@ -163,6 +163,7 @@ import {
   Container,
   Row,
   Col,
+  Alert,
 } from 'reactstrap';
 import AuthLogo from '../../layouts/logo/AuthLogo';
 import FactInput from '../components/FactInput';
@@ -183,6 +184,7 @@ const Login = () => {
     email: '',
     password: '',
   };
+  const [message,setMessage]=useState()
 
   const navigate = useNavigate();
 
@@ -216,15 +218,15 @@ const Login = () => {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-    try {
       const response = await apiPostPut(body, '/users/login', 'POST');
       if (response.status == 200) {
         User.setUser(response?.body?.data)
         console.log(User?.user)
         navigate('/dashboards/minimal');
-      }
-    } catch (error) {
-      console.error('Error during API call:', error);
+        }
+    else{
+      Alert('Something went wrong');
+      setMessage(response?.body?.message)
     }
   };
 
@@ -305,6 +307,7 @@ const Login = () => {
                               component="div"
                               className="invalid-feedback"
                             />
+                            <p style={{color:'red'}}>{message}</p>
 
                             {/* Eye icon for toggling password visibility */}
                             <Button

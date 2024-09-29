@@ -255,10 +255,13 @@
 }
 
 //new css
+
+
 .centered-modal {
-  max-width: 80%; /* Adjust width as needed */
+  max-width: 70%; /* Adjust width as needed */
   width: 100%;
-  height: auto;
+  height: 40%;
+  overflow-y: hidden;
 }
 
 .centered-modal .modal-content {
