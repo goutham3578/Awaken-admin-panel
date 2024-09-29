@@ -210,7 +210,7 @@ console.log(User.user.firstName)
       </Row>
       <Row>
         <Modal isOpen={popup} toggle={() => setPopUp(!popup)} centered className="centered-modal">
-          <ModalBody style={{ height: '80vh', backgroundColor: 'white', borderRadius: '2%',
+          <ModalBody style={{ height: '70vh', backgroundColor: 'white', borderRadius: '2%',
       overflowY: 'auto', }}>
             <RegisterFormik setPopUp={setPopUp} />
           </ModalBody>

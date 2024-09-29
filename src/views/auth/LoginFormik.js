@@ -242,19 +242,19 @@ const Login = () => {
         </Row>
       </Navbar>
 
-      <Container className="m-0" style={{width:'100%'}}>
-        <Row className="mt-0" style={{ width: '100%'}}>
-          <Col style={{width:'100%'}}>
-            <img src={awaken} alt="Login" width="100%" height="100%"/>
+      <Container className="m-0 p-0 d-flex justify-content-center align-items-center" style={{width:"100%"}}>
+        <Row className="mt-0" style={{width:"100%"}}>
+          <Col style={{width:"50%",marginTop:"-8%"}}>
+            <img src={awaken} alt="Login" width="120%" />
           </Col>
           <Col
             style={{
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'start',
+              justifyContent: 'center',
               alignItems: 'end',
-              width: '90%',
-              marginTop: '8%',
+              width: '40%',
+              margin:"0 auto"
             }}
           >
             {/* Login Link */}
@@ -265,7 +265,7 @@ const Login = () => {
                 display: 'flex',
                 alignItems: 'start',
                 justifyContent: 'start',
-                marginLeft: 0,
+                marginLeft: "auto",
               }}
             >
               <Col>
@@ -278,6 +278,7 @@ const Login = () => {
                       <Row style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                         <Col className="mb-3">
                           <FormGroup>
+                          <div style={{width:'130%'}}>
                             <FactInput
                               name="email"
                               type="text"
@@ -285,6 +286,7 @@ const Login = () => {
                               value={email}
                               onChange={handlenames}
                             />
+                            </div>
                             <ErrorMessage
                               name="email"
                               component="div"
@@ -294,6 +296,7 @@ const Login = () => {
                         </Col>
                         <Col className="mb-3">
                           <FormGroup className="position-relative">
+                          <div style={{width:'130%'}}>
                             <FactInput
                               name="password"
                               type={open} // Toggles between 'text' and 'password'
@@ -302,6 +305,7 @@ const Login = () => {
                               onChange={handlenames}
                               style={{ paddingRight: '40px' }} // Adds padding to the right so the button doesn't overlap the text
                             />
+                            </div>
                             <ErrorMessage
                               name="password"
                               component="div"
@@ -315,7 +319,7 @@ const Login = () => {
                               className="position-absolute"
                               style={{
                                 top: '50%',
-                                right: '6%', // Adjusts the positioning inside the input box
+                                right:'-20%', // Adjusts the positioning inside the input box
                                 transform: 'translateY(-50%)',
                                 zIndex: 1,
                                 padding: '0',
@@ -331,10 +335,10 @@ const Login = () => {
                           </FormGroup>
                         </Col>
                       </Row>
-
-                      <Button type="submit" color="success" className="mt-4">
-                        Sign in now
-                      </Button>
+<div className='d-flex justify-content-end' style={{right:0}}><Button type="submit" color="success" className="mt-4 px-4 py-2">
+                        Login now
+                      </Button></div>
+                      
                     </Form>
                   )}
                 </Formik>

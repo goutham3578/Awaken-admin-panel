@@ -529,7 +529,7 @@ const RegisterFormik = ({ setPopUp }) => {
         }}
         onClick={() => setPopUp(false)}
       />{' '}
-      <Container fluid className="vh-100 p-0">
+      <Container fluid className="vh-100 d-flex justify-content-center " style={{padding:"6% 0" }}>
         <Row className="m-0 h-100">
           {/* Left side illustration */}
           <Col md="6" className="d-none d-md-block p-0 center d-flex justify-content-center align-items-center">
@@ -537,19 +537,19 @@ const RegisterFormik = ({ setPopUp }) => {
               src={Layer}
               alt="Login"
               style={{   width: '90%', // Use full width
-                height: '50%',objectFit: 'cover',}}
+                height: '50%',objectFit: 'cover'}}
             />
           </Col>
 
           {/* Right side form */}
-          <Col md="6" className="d-flex flex-column" style={{ marginTop: '5%' }}>
+          <Col md="6" className="d-flex flex-column" >
             {/* Login Link */}
             <Row className="d-flex justify-content-end"></Row>
 
             {/* Signup Form */}
             <Row>
               <Col md="12">
-                <h2 className="mb-4" style={{ fontWeight: 'bold' }}>
+                <h2 className="mb-5" style={{ fontWeight: 'bold' }}>
                   Create a new financial planner
                 </h2>
                 <Formik initialValues={initialValues} validationSchema={validationSchema}>
@@ -675,14 +675,22 @@ const RegisterFormik = ({ setPopUp }) => {
                         </Col>
                       </Row>
 <p style={{color:'red'}}>{message}</p>
-                      <Button
-                        type="submit"
-                        color="success"
-                        className="mt-4 px-4 py-3"
-                        style={{ borderRadius: 10, right: 0 }}
-                      >
-                        start now
-                      </Button>
+<div className="d-flex justify-content-end"> {/* Wrap button in this div */}
+                  <Button
+                    type="submit"
+                    color="success"
+                    className="px-4 py-3"
+                    style={{
+                      borderRadius: 10,
+                      width: '25%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    start now
+                  </Button>
+                </div>
                     </Form>
                   )}
                 </Formik>

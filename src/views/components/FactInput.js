@@ -63,7 +63,7 @@ export default function FactInput({
         id={id || name}
         className={`form-control p-3 border-input  ${meta.touched && meta.error ? 'is-invalid' : ''}`} // Add 'is-invalid' class if there is an error
         pattern={type === 'number' ? '[0-9]*' : undefined} // pattern for number type
-        style={{ width: '100%',height:'70px',borderRadius:12 }}
+        style={{ width: '100%',height:'60px',borderRadius:12 }}
         onChange={handleChange}   // Use Formik's setValue to handle input changes
         value={field.value}  // Field value managed by Formik
       />
