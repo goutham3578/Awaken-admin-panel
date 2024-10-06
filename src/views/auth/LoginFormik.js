@@ -231,8 +231,8 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Navbar color="light"  expand="md" style={{height:'100px'}}>
+    <div style={{overflowY:"hidden",width:'100%',height:'100vh'}}>
+      <Navbar color="light"  expand="md" style={{height:'100px',width:'100%'}}>
         <Row className="w-100 justify-content-between" >
           <Col md="auto">
             <Link to="/">
@@ -242,10 +242,10 @@ const Login = () => {
         </Row>
       </Navbar>
 
-      <Container className="m-0 p-0 d-flex justify-content-center align-items-center" style={{width:"100%"}}>
+      <Container className=" m-0 p-0 d-flex justify-content-center align-items-center" style={{width:"100%"}}>
         <Row className="mt-0" style={{width:"100%"}}>
           <Col style={{width:"50%",marginTop:"-8%"}}>
-            <img src={awaken} alt="Login" width="120%" />
+            <img src={awaken} alt="Login" width="100%" height={"80%"}/>
           </Col>
           <Col
             style={{
@@ -347,7 +347,7 @@ const Login = () => {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 };
 

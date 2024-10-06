@@ -515,8 +515,11 @@ const RegisterFormik = ({ setPopUp }) => {
         width: '100%',
         height: '100%',
         backgroundColor: 'white',
-        padding: 0,
-        overflow:'hidden'
+        overflowY:'scroll',
+        scrollbarWidth: 'none', // For Firefox
+        msOverflowStyle: 'none',    
+        margin:0,
+        padding:0     
       }}
     >
       <IoCloseCircleOutline
@@ -529,7 +532,7 @@ const RegisterFormik = ({ setPopUp }) => {
         }}
         onClick={() => setPopUp(false)}
       />{' '}
-      <Container fluid className="vh-100 d-flex justify-content-center " style={{padding:"6% 0" }}>
+      <Container fluid className="d-flex justify-content-center" style={{padding:"6% 0"}} >
         <Row className="m-0 h-100">
           {/* Left side illustration */}
           <Col md="6" className="d-none d-md-block p-0 center d-flex justify-content-center align-items-center">
@@ -537,7 +540,7 @@ const RegisterFormik = ({ setPopUp }) => {
               src={Layer}
               alt="Login"
               style={{   width: '90%', // Use full width
-                height: '50%',objectFit: 'cover'}}
+                height: '90%',objectFit: 'cover'}}
             />
           </Col>
 
