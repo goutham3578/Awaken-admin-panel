@@ -523,7 +523,7 @@ const RegisterFormik = ({ setPopUp }) => {
       }}
     >
       <IoCloseCircleOutline
-        size={20}
+        size={30}
         style={{
           position: 'absolute',
           top: '10px', // Adjust as needed

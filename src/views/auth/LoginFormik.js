@@ -245,7 +245,7 @@ const Login = () => {
       <Container className=" m-0 p-0 d-flex justify-content-center align-items-center" style={{width:"100%"}}>
         <Row className="mt-0" style={{width:"100%"}}>
           <Col style={{width:"50%",marginTop:"-8%"}}>
-            <img src={awaken} alt="Login" width="100%" height={"80%"}/>
+            <img src={awaken} alt="Login" width="120%" height={"100%"}/>
           </Col>
           <Col
             style={{

@@ -261,6 +261,10 @@
   max-width: 70%; 
 }
 
+.has-value-fact-input ~ label{
+  top: -0.75rem;
+  @apply text-secondary;
+}
 
 
 
